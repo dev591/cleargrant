@@ -23,9 +23,9 @@ const AssetOptIn = ({ openModal, closeModal }: AssetOptInProps) => {
   }, [transactionSigner])
 
   const onOptIn = async () => {
-    if (!activeAddress) return enqueueSnackbar('Connect a wallet first', { variant: 'error' })
+    if (!activeAddress) { enqueueSnackbar('Connect a wallet first', { variant: 'error' }); return }
     const id = BigInt(asaId)
-    if (id <= 0n) return enqueueSnackbar('Enter a valid ASA ID', { variant: 'error' })
+    if (id <= 0n) { enqueueSnackbar('Enter a valid ASA ID', { variant: 'error' }); return }
     setLoading(true)
     try {
       await algorand.send.assetOptIn({ sender: activeAddress, assetId: id })

@@ -1,0 +1,218 @@
+{
+  "grants": [
+    {
+      "_id": "grant-seeded-123",
+      "title": "AI Protocol Enhancements",
+      "description": "Developing robust AI tooling for Algorand.",
+      "domain": "Technology",
+      "totalAmount": 100000,
+      "sponsorWallet": "SPONSOR_WALLET_ALGO",
+      "deadline": "2027-12-31",
+      "status": "OPEN",
+      "createdAt": "2026-03-02T15:18:57.291Z",
+      "milestones": [
+        {
+          "index": 0,
+          "title": "Initial Draft",
+          "description": "Drafting the core protocol spec.",
+          "amount": 25000,
+          "deadline": "2027-04-01",
+          "status": "SUBMITTED",
+          "proofUrl": "https://github.com/test/commit",
+          "proofDescription": "Completed the first iteration of the features. Everything works as expected. Writing some extra text to pass the AI character count limits and get high confidence."
+        }
+      ]
+    },
+    {
+      "_id": "46c58663-efa9-431e-bc85-c4f9926a8a5e",
+      "title": "ai ",
+      "description": "hello",
+      "domain": "Technology",
+      "totalAmount": 1,
+      "sponsorWallet": "DEMO7XKLMNPQRST2UVWXYZ3ABCDEFGHIJKLMNO",
+      "deadline": "2002-02-09",
+      "milestones": [
+        {
+          "index": 0,
+          "title": "hello",
+          "description": "helo",
+          "amount": 1,
+          "deadline": "2005-09-28"
+        }
+      ],
+      "status": "FUNDED",
+      "createdAt": "2026-03-02T17:20:32.235Z"
+    },
+    {
+      "_id": "75b8c256-4472-42e3-946e-ec42825642e3",
+      "title": "hello",
+      "description": "helllo 123",
+      "domain": "Technology",
+      "totalAmount": 1,
+      "sponsorWallet": "DEMO7XKLMNPQRST2UVWXYZ3ABCDEFGHIJKLMNO",
+      "deadline": "",
+      "milestones": [
+        {
+          "index": 0,
+          "title": "completion certificate",
+          "description": "complete it ",
+          "amount": 1,
+          "deadline": "2027-01-29"
+        }
+      ],
+      "status": "FUNDED",
+      "createdAt": "2026-03-02T20:20:26.933Z"
+    },
+    {
+      "_id": "e9d611b4-8c32-4805-9a96-f91316bb028e",
+      "title": "ads",
+      "description": "asd",
+      "domain": "Technology",
+      "totalAmount": 1,
+      "sponsorWallet": "KJRWDDAMLSXDBNGYALHIYU2O7MBG2PUP6UMFBB2AG6STNMMEK4ODRJ67OE",
+      "deadline": "2027-02-03",
+      "milestones": [
+        {
+          "index": 0,
+          "title": "dsa",
+          "description": "asda",
+          "amount": 1,
+          "deadline": "2026-09-28"
+        }
+      ],
+      "status": "FUNDED",
+      "createdAt": "2026-03-02T20:33:01.679Z"
+    }
+  ],
+  "applications": [
+    {
+      "_id": "5af4b8b7-740d-4ad8-a9e5-277ecc22e8ce",
+      "grantId": "75b8c256-4472-42e3-946e-ec42825642e3",
+      "applicantWallet": "DEMO7XKLMNPQRST2UVWXYZ3ABCDEFGHIJKLMNO",
+      "projectTitle": "lasldkmm",
+      "description": "as djasdajksbdjknansdkjnasndjannsdnskjndkans,dkanjndka,sdnkajsdn",
+      "teamSize": 3,
+      "skills": [],
+      "githubUrl": "anslkdn",
+      "status": "APPROVED",
+      "requestedAmount": 0,
+      "milestonesCompleted": 0,
+      "totalMilestones": 0,
+      "createdAt": "2026-03-02T21:08:05.679Z",
+      "aiScore": 0,
+      "aiRecommendation": ""
+    },
+    {
+      "_id": "4dbf16e9-8a67-4614-9814-5678e3558932",
+      "grantId": "e9d611b4-8c32-4805-9a96-f91316bb028e",
+      "applicantWallet": "KJRWDDAMLSXDBNGYALHIYU2O7MBG2PUP6UMFBB2AG6STNMMEK4ODRJ67OE",
+      "projectTitle": "jndnlansdlas",
+      "description": "lasndlalksmdoiansidnlasdaoisndlnasdioasdlmasdlasdmlasm",
+      "teamSize": 3,
+      "skills": [],
+      "githubUrl": "aks djnasd",
+      "status": "APPROVED",
+      "requestedAmount": 0,
+      "milestonesCompleted": 0,
+      "totalMilestones": 0,
+      "createdAt": "2026-03-02T21:09:11.435Z",
+      "aiScore": 0,
+      "aiRecommendation": ""
+    },
+    {
+      "_id": "21951549-c18b-408e-a6da-e35808fce38d",
+      "grantId": "75b8c256-4472-42e3-946e-ec42825642e3",
+      "applicantWallet": "DEMO7XKLMNPQRST2UVWXYZ3ABCDEFGHIJKLMNO",
+      "projectTitle": "ai",
+      "description": "sakdsakjdnasduasndkasdadnkansdnlasdlnalsndlals",
+      "teamSize": 3,
+      "skills": [],
+      "githubUrl": "kahsdha",
+      "aadhaarId": "123456789123",
+      "kycDocumentUrl": "hello.com",
+      "status": "SUBMITTED",
+      "requestedAmount": 0,
+      "milestonesCompleted": 0,
+      "totalMilestones": 0,
+      "createdAt": "2026-03-02T21:44:53.409Z",
+      "aiScore": 0,
+      "aiRecommendation": ""
+    }
+  ],
+  "transactions": [
+    {
+      "_id": "582459f0-31f7-416e-94c9-04197f035f8c",
+      "grantId": "46c58663-efa9-431e-bc85-c4f9926a8a5e",
+      "type": "DEPOSIT",
+      "amount": 1,
+      "fromWallet": "DEMO7XKLMNPQRST2UVWXYZ3ABCDEFGHIJKLMNO",
+      "toWallet": "DEMO7XKLMNPQRST2UVWXYZ3ABCDEFGHIJKLMNO",
+      "txId": "GRANT-46c58663",
+      "explorerUrl": "",
+      "note": "Grant funded",
+      "createdAt": "2026-03-02T17:20:32.249Z"
+    },
+    {
+      "_id": "9ff1a903-8414-4083-a931-ea9790c3099b",
+      "grantId": "75b8c256-4472-42e3-946e-ec42825642e3",
+      "type": "DEPOSIT",
+      "amount": 1,
+      "fromWallet": "DEMO7XKLMNPQRST2UVWXYZ3ABCDEFGHIJKLMNO",
+      "toWallet": "DEMO7XKLMNPQRST2UVWXYZ3ABCDEFGHIJKLMNO",
+      "txId": "GRANT-75b8c256",
+      "explorerUrl": "",
+      "note": "Grant funded",
+      "createdAt": "2026-03-02T20:20:26.951Z"
+    },
+    {
+      "_id": "54654514-cc1f-40fe-ba65-44ab708826d4",
+      "grantId": "e9d611b4-8c32-4805-9a96-f91316bb028e",
+      "type": "DEPOSIT",
+      "amount": 1,
+      "fromWallet": "KJRWDDAMLSXDBNGYALHIYU2O7MBG2PUP6UMFBB2AG6STNMMEK4ODRJ67OE",
+      "toWallet": "KJRWDDAMLSXDBNGYALHIYU2O7MBG2PUP6UMFBB2AG6STNMMEK4ODRJ67OE",
+      "txId": "GRANT-e9d611b4",
+      "explorerUrl": "",
+      "note": "Grant funded",
+      "createdAt": "2026-03-02T20:33:01.693Z"
+    },
+    {
+      "_id": "ef2961b7-db45-45a2-bd8b-1bd265a3b993",
+      "grantId": "e9d611b4-8c32-4805-9a96-f91316bb028e",
+      "type": "GRANT_APPROVED_INITIAL_FUND",
+      "amount": 0.25,
+      "fromWallet": "KJRWDDAMLSXDBNGYALHIYU2O7MBG2PUP6UMFBB2AG6STNMMEK4ODRJ67OE",
+      "toWallet": "DEMO7XKLMNPQRST2UVWXYZ3ABCDEFGHIJKLMNO",
+      "txId": "TX-MOCK-1772486179908",
+      "explorerUrl": "https://testnet.algoexplorer.io/tx/TX-MOCK-1772486179908",
+      "note": "Initial 25% Grant Approval Fund Transfer",
+      "createdAt": "2026-03-02T21:16:19.909Z"
+    }
+  ],
+  "votes": [],
+  "users": [
+    {
+      "walletAddress": "DEMO7XKL9MNPQRST2UVWXYZ3ABC4DEF5GHI6JKL",
+      "reputationScore": 0,
+      "reputationTier": "NEWCOMER",
+      "completionRate": 0,
+      "grantsCompleted": 0,
+      "milestonesCompleted": 0,
+      "totalMilestones": 0,
+      "votingParticipation": 0,
+      "totalReceived": 0
+    },
+    {
+      "walletAddress": "DEMO7XKLMNPQRST2UVWXYZ3ABCDEFGHIJKLMNO",
+      "reputationScore": 0,
+      "reputationTier": "BUILDER",
+      "completionRate": 0,
+      "grantsCompleted": 0,
+      "milestonesCompleted": 0,
+      "totalMilestones": 0,
+      "votingParticipation": 0,
+      "totalReceived": 0
+    }
+  ],
+  "escrows": []
+}

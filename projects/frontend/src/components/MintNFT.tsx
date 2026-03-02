@@ -32,8 +32,8 @@ const MintNFT = ({ openModal, closeModal }: MintNFTProps) => {
   }
 
   const onMint = async () => {
-    if (!activeAddress) return enqueueSnackbar('Connect a wallet first', { variant: 'error' })
-    if (!file) return enqueueSnackbar('Select an image', { variant: 'error' })
+    if (!activeAddress) { enqueueSnackbar('Connect a wallet first', { variant: 'error' }); return }
+    if (!file) { enqueueSnackbar('Select an image', { variant: 'error' }); return }
 
     setLoading(true)
     try {

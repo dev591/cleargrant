@@ -25,9 +25,9 @@ const SendAlgo = ({ openModal, closeModal }: SendAlgoProps) => {
   }, [transactionSigner])
 
   const onSend = async () => {
-    if (!activeAddress) return enqueueSnackbar('Connect a wallet first', { variant: 'error' })
+    if (!activeAddress) { enqueueSnackbar('Connect a wallet first', { variant: 'error' }); return }
     const microAlgos = BigInt(Math.floor(Number(amount) * 1e6))
-    if (!to || microAlgos <= 0n) return enqueueSnackbar('Enter valid address and amount', { variant: 'error' })
+    if (!to || microAlgos <= 0n) { enqueueSnackbar('Enter valid address and amount', { variant: 'error' }); return }
     setLoading(true)
     try {
       await algorand.send.payment({ sender: activeAddress, receiver: to, amount: algokit.microAlgos(microAlgos) })

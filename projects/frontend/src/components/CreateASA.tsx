@@ -26,7 +26,7 @@ const CreateASA = ({ openModal, closeModal }: CreateASAProps) => {
   }, [transactionSigner])
 
   const onCreate = async () => {
-    if (!activeAddress) return enqueueSnackbar('Connect a wallet first', { variant: 'error' })
+    if (!activeAddress) { enqueueSnackbar('Connect a wallet first', { variant: 'error' }); return }
     setLoading(true)
     try {
       const result = await algorand.send.assetCreate({
