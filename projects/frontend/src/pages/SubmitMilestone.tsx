@@ -231,8 +231,6 @@ const SubmitMilestone = () => {
         confidence: verifyData.result.confidence ?? 0,
         reasoning: verifyData.result.reasoning ?? '',
         proofHash: verifyData.blockchain.txId,
-        // backend keeps fundsReleased false at verification step,
-        // separate release call toggles it after on-chain transfer
         fundsReleased: false,
         txId: verifyData.blockchain.txId,
         fraudScore,
@@ -240,39 +238,70 @@ const SubmitMilestone = () => {
 
       if (verified && !flagged) {
         setStep('releasing')
-        await new Promise((r) => setTimeout(r, 800))
 
-        // ⛓️ BLOCKCHAIN: Direct ALGO transfer — milestone fund release
-        const releaseData = await apiPatch(
-          `/milestones/${grantId}/${milestoneIndex}/release`,
-          {
-            txId: verifyData.blockchain.txId,
-            explorerUrl: verifyData.blockchain.explorerUrl,
-            amountReleased: milestone?.amount ?? 0,
-          },
-        )
+        // ⛓️ REAL BLOCKCHAIN TRANSACTION via Pera Wallet
+        try {
+          const algodClient = new algosdk.Algodv2('', 'https://testnet-api.algonode.cloud', '')
+          const suggestedParams = await algodClient.getTransactionParams().do()
 
-        // 🔌 BACKEND: POST /transactions — record fund release
-        await apiPost('/transactions', {
-          grantId,
-          type: 'MILESTONE_RELEASE',
-          amount: milestone?.amount ?? 0,
-          fromWallet: grant?.sponsorWallet ?? 'PLATFORM',
-          toWallet: walletAddress,
-          txId: verifyData.blockchain.txId,
-          explorerUrl: verifyData.blockchain.explorerUrl,
-          note: `Milestone ${milestoneIndex + 1} verified and released`,
-        })
+          // amount is in ALGOs, so convert to MicroAlgos
+          const amountMicroAlgos = Math.floor((milestone?.amount || 0) * 1_000_000)
 
-        setReleaseResult({
-          txId: verifyData.blockchain.txId,
-          explorerUrl:
-            releaseData?.explorerUrl ?? verifyData.blockchain.explorerUrl,
-          amount: milestone?.amount ?? 0,
-        })
-        setShowReleaseCard(true)
-        if (typeof (window as any).triggerBlockchainBurst === 'function') {
-          ; (window as any).triggerBlockchainBurst()
+          if (!grant?.sponsorWallet) throw new Error("Missing Sponsor Wallet")
+
+          const txn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
+            from: grant.sponsorWallet,      // The sponsor releasing funds
+            to: walletAddress,              // The student receiving funds
+            amount: amountMicroAlgos,
+            suggestedParams,
+            note: new Uint8Array(Buffer.from(`ClearGrant: Milestone ${milestoneIndex + 1} Released`))
+          })
+
+          // Trigger Pera Wallet signature request
+          const encodedTxn = txn.toByte()
+          const signedTxns = await signTransactions([encodedTxn])
+
+          // Submit to network
+          const sendTxPromise = algodClient.sendRawTransaction(signedTxns).do()
+          const { txId } = await sendTxPromise
+
+          // Wait for confirmation
+          await algosdk.waitForConfirmation(algodClient, txId, 4)
+
+          // 🔌 BACKEND: Mark as released on our DB
+          const releaseData = await apiPatch(
+            `/milestones/${grantId}/${milestoneIndex}/release`,
+            {
+              txId: txId,
+              explorerUrl: `https://testnet.algoexplorer.io/tx/${txId}`,
+              amountReleased: milestone?.amount ?? 0,
+            },
+          )
+
+          await apiPost('/transactions', {
+            grantId,
+            type: 'MILESTONE_RELEASE',
+            amount: milestone?.amount ?? 0,
+            fromWallet: grant.sponsorWallet,
+            toWallet: walletAddress,
+            txId: txId,
+            explorerUrl: `https://testnet.algoexplorer.io/tx/${txId}`,
+            note: `Milestone ${milestoneIndex + 1} verified and released`,
+          })
+
+          setReleaseResult({
+            txId: txId,
+            explorerUrl: `https://testnet.algoexplorer.io/tx/${txId}`,
+            amount: milestone?.amount ?? 0,
+          })
+
+          setShowReleaseCard(true)
+          if (typeof (window as any).triggerBlockchainBurst === 'function') {
+            ; (window as any).triggerBlockchainBurst()
+          }
+        } catch (txnError: any) {
+          console.error("Blockchain transaction failed:", txnError)
+          throw new Error("Transaction rejected or failed on-chain.")
         }
       }
 
