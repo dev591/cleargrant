@@ -36,23 +36,8 @@ export async function callN8n(url: string, walletAddress: string, input: Record<
       },
     }
   } catch (error) {
-    console.warn('⚠️ N8N Webhook failed, returning mock success response for demo purposes:', error)
-
-    // MOCK RESPONSE FOR DEMO RESILIENCY
-    return {
-      result: {
-        verified: true,
-        flagged: false,
-        confidence: 0.95,
-        fraudScore: 0.05,
-        reasoning: 'Mock AI Verification: The submitted proof appears authentic and meets all milestone requirements. No fraud detected.'
-      },
-      blockchain: {
-        txId: 'MOCK-TX-' + Math.random().toString(36).substring(7),
-        explorerUrl: 'https://testnet.algoexplorer.io',
-        verified: true
-      }
-    }
+    console.error('❌ N8N Webhook failed! We are no longer using mock responses. Error:', error)
+    throw error // Force failure so the user knows the AI webhook is down or CORS failed
   }
 }
 
